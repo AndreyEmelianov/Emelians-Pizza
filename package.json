@@ -1,6 +1,11 @@
 {
   "name": "emelians-pizza",
   "version": "0.1.0",
+  "author": {
+    "name": "Andrey Emelianov",
+    "email": "621077@mail.ru",
+    "url": "https://github.com/AndreyEmelianov"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
