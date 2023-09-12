@@ -1,0 +1,28 @@
+.searchWrapper {
+  position: relative;
+  left: -130px;
+}
+
+.search {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  padding-left: 42px;
+  border-radius: 10px;
+  outline: none;
+  width: 400px;
+  font-size: 16px;
+  transition: all 0.15s ease-in-out;
+}
+
+.search:focus {
+  border: 1px solid #fe5f1e;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.3;
+  position: absolute;
+  top: 12px;
+  left: 14px;
+}
