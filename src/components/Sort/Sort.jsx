@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortType } from '../../redux/slices/filterSlice';
 
+export const sortList = [
+  { name: 'популярности', sortProperty: 'rating' },
+  { name: 'цене', sortProperty: 'price' },
+  { name: 'алфавиту', sortProperty: 'title' },
+];
+
 const Sort = () => {
   const [isOpenSort, setIsOpenSort] = useState(false);
 
   const sortType = useSelector((state) => state.filters.sortType);
   const dispatch = useDispatch();
-
-  const sortList = [
-    { name: 'популярности', sortProperty: 'rating' },
-    { name: 'цене', sortProperty: 'price' },
-    { name: 'алфавиту', sortProperty: 'title' },
-  ];
 
   const selectorSortHandler = (sortObj) => {
     dispatch(setSortType(sortObj));
