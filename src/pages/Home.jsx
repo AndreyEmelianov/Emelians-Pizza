@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import qs from 'qs';
 
+import { SearchContext } from '../App';
 import Categories from '../components/Categories/Categories';
 import Sort from '../components/Sort/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton/Skeleton';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Pagination from '../components/Pagination/Pagination';
-import { SearchContext } from '../App';
-import { useDispatch, useSelector } from 'react-redux';
 import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -18,6 +20,8 @@ const Home = () => {
 
   const { sortType, categoryId, currentPage } = useSelector((state) => state.filters);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,6 +46,16 @@ const Home = () => {
     fetchData();
     window.scrollTo(0, 0);
   }, [categoryId, sortType, searchValue, currentPage]);
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sortProperty: sortType.sortProperty,
+      categoryId,
+      currentPage,
+    });
+
+    navigate(`?${queryString}`);
+  }, [categoryId, sortType, currentPage]);
 
   const onChangePage = (page) => {
     dispatch(setCurrentPage(page));
