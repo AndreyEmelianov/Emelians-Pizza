@@ -1,7 +1,12 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSortType } from '../../redux/slices/filterSlice';
 
-const Sort = ({ sortType, onChangeSort }) => {
+const Sort = () => {
   const [isOpenSort, setIsOpenSort] = useState(false);
+
+  const sortType = useSelector((state) => state.filters.sortType);
+  const dispatch = useDispatch();
 
   const sortList = [
     { name: 'популярности', sortProperty: 'rating' },
@@ -10,7 +15,7 @@ const Sort = ({ sortType, onChangeSort }) => {
   ];
 
   const selectorSortHandler = (sortObj) => {
-    onChangeSort(sortObj);
+    dispatch(setSortType(sortObj));
     setIsOpenSort(false);
   };
 
