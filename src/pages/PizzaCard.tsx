@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const PizzaCard = () => {
-  const [pizza, setPizza] = useState();
+import { IPizza } from '../interfaces/pizza.interface';
+
+const PizzaCard: FC = () => {
+  const [pizza, setPizza] = useState<IPizza>();
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -23,7 +25,7 @@ const PizzaCard = () => {
   }, []);
 
   if (!pizza) {
-    return 'Загрузка...';
+    return <>Загрузка...</>;
   }
 
   return (

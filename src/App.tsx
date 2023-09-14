@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
+
 import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
-import './scss/app.scss';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 import PizzaCard from './pages/PizzaCard';
+
+import './scss/app.scss';
 
 function App() {
   return (
