@@ -1,4 +1,7 @@
-const Categories = ({ categoryId, onChangeCategory }) => {
+import { FC } from 'react';
+import { ICategoriesProps } from './Categories.props';
+
+const Categories: FC<ICategoriesProps> = ({ categoryId, onChangeCategory }) => {
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (

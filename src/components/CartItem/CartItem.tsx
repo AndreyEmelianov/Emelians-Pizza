@@ -1,7 +1,10 @@
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItemToCart, minusItem, removeItemFromCart } from '../../redux/slices/cartSlice';
 
-const CartItem = ({ id, title, price, count, imageUrl, type, size }) => {
+import { addItemToCart, minusItem, removeItemFromCart } from '../../redux/slices/cartSlice';
+import { IPizza } from '../../interfaces/pizza.interface';
+
+const CartItem: FC<IPizza> = ({ id, title, price, count, imageUrl, type, size }) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {

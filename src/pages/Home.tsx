@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -16,7 +16,7 @@ import {
 } from '../redux/slices/filterSlice';
 import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice';
 
-const Home = () => {
+const Home: FC = () => {
   const isMounted = useRef(false);
   const isSearch = useRef(false);
 
@@ -59,6 +59,7 @@ const Home = () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
 
     dispatch(
+      //@ts-ignore
       fetchPizzas({
         search,
         category,
@@ -77,11 +78,11 @@ const Home = () => {
     isSearch.current = false;
   }, [categoryId, sortType, searchValue, currentPage]);
 
-  const onChangePage = (page) => {
+  const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
   };
 
-  const pizzas = items.map((item) => (
+  const pizzas = items.map((item: any) => (
     <Link to={`/pizzas/${item.id}`} key={item.id}>
       <PizzaBlock {...item} />
     </Link>
@@ -93,7 +94,7 @@ const Home = () => {
       <div className="content__top">
         <Categories
           categoryId={categoryId}
-          onChangeCategory={(index) => dispatch(setCategoryId(index))}
+          onChangeCategory={(index: number) => dispatch(setCategoryId(index))}
         />
         <Sort />
       </div>
@@ -107,7 +108,7 @@ const Home = () => {
         <div className="content__items">{status === 'loading' ? skeletons : pizzas}</div>
       )}
 
-      <Pagination currentPage={currentPage} onChangePage={(page) => onChangePage(page)} />
+      <Pagination currentPage={currentPage} onChangePage={(page: number) => onChangePage(page)} />
     </div>
   );
 };
