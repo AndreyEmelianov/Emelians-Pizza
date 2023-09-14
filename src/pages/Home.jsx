@@ -1,9 +1,8 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
-import { SearchContext } from '../App';
 import Categories from '../components/Categories/Categories';
 import Sort, { sortList } from '../components/Sort/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton/Skeleton';
@@ -82,7 +81,11 @@ const Home = () => {
     dispatch(setCurrentPage(page));
   };
 
-  const pizzas = items.map((item) => <PizzaBlock {...item} key={item.id} />);
+  const pizzas = items.map((item) => (
+    <Link to={`/pizzas/${item.id}`} key={item.id}>
+      <PizzaBlock {...item} />
+    </Link>
+  ));
   const skeletons = [...new Array(10)].map((_, index) => <Skeleton key={index} />);
 
   return (
