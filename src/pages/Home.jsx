@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -9,17 +9,20 @@ import Sort, { sortList } from '../components/Sort/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton/Skeleton';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Pagination from '../components/Pagination/Pagination';
-import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
-import { fetchPizzas } from '../redux/slices/pizzasSlice';
+import {
+  filtersSelector,
+  setCategoryId,
+  setCurrentPage,
+  setFilters,
+} from '../redux/slices/filterSlice';
+import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice';
 
 const Home = () => {
   const isMounted = useRef(false);
   const isSearch = useRef(false);
 
-  const { searchValue } = useContext(SearchContext);
-
-  const { items, status } = useSelector((state) => state.pizzas);
-  const { sortType, categoryId, currentPage } = useSelector((state) => state.filters);
+  const { items, status } = useSelector(pizzasSelector);
+  const { sortType, categoryId, currentPage, searchValue } = useSelector(filtersSelector);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
