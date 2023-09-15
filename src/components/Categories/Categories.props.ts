@@ -1,4 +1,4 @@
 export interface ICategoriesProps {
   categoryId: number;
-  onChangeCategory: any;
+  onChangeCategory: (index: number) => void;
 }

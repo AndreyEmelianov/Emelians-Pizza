@@ -17,8 +17,8 @@ import {
 import { fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice';
 
 const Home: FC = () => {
-  const isMounted = useRef(false);
-  const isSearch = useRef(false);
+  const isMounted = useRef<boolean>(false);
+  const isSearch = useRef<boolean>(false);
 
   const { items, status } = useSelector(pizzasSelector);
   const { sortType, categoryId, currentPage, searchValue } = useSelector(filtersSelector);
