@@ -1,6 +1,7 @@
 import { FC, memo, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SortListItem, SortPropertyEnum, setSortType } from '../../redux/slices/filterSlice';
+import { setSortType } from '../../redux/filter/filterSlice';
+import { SortListItem, SortPropertyEnum } from '../../redux/filter/types';
 
 export const sortList: SortListItem[] = [
   { name: 'цене', sortProperty: SortPropertyEnum.PRICE },

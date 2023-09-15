@@ -9,13 +9,10 @@ import Sort, { sortList } from '../components/Sort/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton/Skeleton';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Pagination from '../components/Pagination/Pagination';
-import {
-  filtersSelector,
-  setCategoryId,
-  setCurrentPage,
-  setFilters,
-} from '../redux/slices/filterSlice';
-import { SearchPizzaParams, fetchPizzas, pizzasSelector } from '../redux/slices/pizzasSlice';
+import { setCategoryId, setCurrentPage, setFilters } from '../redux/filter/filterSlice';
+import { pizzasSelector } from '../redux/pizzas/selectors';
+import { filtersSelector } from '../redux/filter/selectors';
+import { fetchPizzas } from '../redux/pizzas/asyncActions';
 
 const Home: FC = () => {
   const isMounted = useRef<boolean>(false);

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 
-import { addItemToCart, minusItem, removeItemFromCart } from '../../redux/slices/cartSlice';
+import { addItemToCart, minusItem, removeItemFromCart } from '../../redux/cart/cartSlice';
 import { IPizza } from '../../interfaces/pizza.interface';
 
 const CartItem: FC<IPizza> = ({ id, title, price, count, imageUrl, type, size }) => {
