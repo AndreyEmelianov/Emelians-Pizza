@@ -45,9 +45,9 @@ export const cartSlice = createSlice({
         findItem.count--;
       }
 
-      if (findItem && findItem.count === 0) {
-        state.items = state.items.filter((item) => item.id !== action.payload);
-      }
+      // if (findItem && findItem.count === 0) {
+      //   state.items = state.items.filter((item) => item.id !== action.payload);
+      // }
     },
   },
 });

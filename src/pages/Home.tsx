@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -93,17 +93,18 @@ const Home: FC = () => {
     dispatch(setCurrentPage(page));
   };
 
+  const onChangeCategory = useCallback((index: number) => {
+    dispatch(setCategoryId(index));
+  }, []);
+
   const pizzas = items.map((item: any) => <PizzaBlock {...item} key={item.id} />);
   const skeletons = [...new Array(10)].map((_, index) => <Skeleton key={index} />);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories
-          categoryId={categoryId}
-          onChangeCategory={(index: number) => dispatch(setCategoryId(index))}
-        />
-        <Sort />
+        <Categories categoryId={categoryId} onChangeCategory={onChangeCategory} />
+        <Sort sortType={sortType} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (

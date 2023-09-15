@@ -1,11 +1,6 @@
-import { FC, useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  SortListItem,
-  SortPropertyEnum,
-  setSortType,
-  sortTypeSelector,
-} from '../../redux/slices/filterSlice';
+import { FC, memo, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { SortListItem, SortPropertyEnum, setSortType } from '../../redux/slices/filterSlice';
 
 export const sortList: SortListItem[] = [
   { name: 'цене', sortProperty: SortPropertyEnum.PRICE },
@@ -13,12 +8,15 @@ export const sortList: SortListItem[] = [
   { name: 'алфавиту', sortProperty: SortPropertyEnum.TITLE },
 ];
 
-const Sort: FC = () => {
+type SortProps = {
+  sortType: SortListItem;
+};
+
+const Sort: FC<SortProps> = ({ sortType }) => {
   const [isOpenSort, setIsOpenSort] = useState<boolean>(false);
 
   const sortRef = useRef<HTMLDivElement>(null);
 
-  const sortType = useSelector(sortTypeSelector);
   const dispatch = useDispatch();
 
   const selectorSortHandler = (sortObj: SortListItem) => {
@@ -71,4 +69,4 @@ const Sort: FC = () => {
     </div>
   );
 };
-export default Sort;
+export default memo(Sort);

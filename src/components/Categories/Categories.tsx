@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { ICategoriesProps } from './Categories.props';
 
 const Categories: FC<ICategoriesProps> = ({ categoryId, onChangeCategory }) => {
@@ -19,4 +19,4 @@ const Categories: FC<ICategoriesProps> = ({ categoryId, onChangeCategory }) => {
     </div>
   );
 };
-export default Categories;
+export default memo(Categories);
