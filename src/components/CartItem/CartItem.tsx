@@ -11,7 +11,7 @@ const CartItem: FC<IPizza> = ({ id, title, price, count, imageUrl, type, size })
     dispatch(
       addItemToCart({
         id,
-      }),
+      } as IPizza),
     );
   };
 
